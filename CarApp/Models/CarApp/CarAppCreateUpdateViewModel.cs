@@ -1,6 +1,6 @@
-﻿namespace CarApp.Models.Car
+﻿namespace CarApp.Models.CarApp
 {
-    public class CarIndexViewModel
+    public class CarAppCreateUpdateViewModel
     {
         public Guid? Id { get; set; }
         public string Owner { get; set; }
@@ -15,5 +15,7 @@
         public int CarWeight { get; set; }
         public DateTime BuiltAt { get; set; }
         public DateTime RegistratedAt { get; set; }
+
+
     }
 }

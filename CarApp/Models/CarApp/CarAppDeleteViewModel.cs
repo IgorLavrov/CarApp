@@ -1,6 +1,6 @@
-﻿namespace CarApp.Models.Car
+﻿namespace CarApp.Models.CarApp
 {
-    public class CarDetailsViewModel
+    public class CarAppDeleteViewModel
     {
         public Guid? Id { get; set; }
         public string Owner { get; set; }

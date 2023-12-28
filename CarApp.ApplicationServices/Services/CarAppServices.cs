@@ -1,5 +1,6 @@
 ﻿using CarApp.Core.Domain;
 using CarApp.Core.Dto;
+using CarApp.Core.ServiceInterface;
 using CarApp.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CarApp.ApplicationServices.Services
 {
-    public class CarAppServices
+    public class CarAppServices : ICarAppServices
     {
         private readonly CarAppContext _context;
 
