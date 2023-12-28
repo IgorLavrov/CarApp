@@ -8,8 +8,7 @@ namespace CarApp.Data
         public CarAppContext(
 
             DbContextOptions<CarAppContext> options):base (options)
-        { 
-        }
+        {  }
 
         public DbSet<CarsApp> Cars { get; set; }
 
