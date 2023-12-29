@@ -8,6 +8,8 @@ namespace CarApp.Core.Dto
 {
     public class CarAppDto
     {
+      
+
         public Guid? Id { get; set; }
         public string Owner { get; set; }
         public string RegistrationNumber { get; set; }
