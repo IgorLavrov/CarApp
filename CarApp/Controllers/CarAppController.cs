@@ -65,6 +65,8 @@ namespace CarApp.Controllers
             vm.Color = cars.Color;
             vm.CarWeight = cars.CarWeight;
             vm.Brand = cars.Brand;
+            vm.NumberOfCarDoors = cars.NumberOfCarDoors;
+            vm.EngineCapacity = cars.EngineCapacity;
             vm.RegistrationNumber = cars.RegistrationNumber;
             vm.BuiltAt = cars.BuiltAt;
             vm.RegistratedAt = cars.RegistratedAt;
@@ -197,6 +199,8 @@ namespace CarApp.Controllers
             vm.Model = cars.Model;
             vm.CarWeight = cars.CarWeight;
             vm.VinNumber = cars.VinNumber;
+            vm.Color = cars.Color;
+            vm.EngineCapacity = cars.EngineCapacity;
             vm.Brand = cars.Brand;
             vm.NumberOfCarDoors = cars.NumberOfCarDoors;
             vm.RegistrationNumber = cars.RegistrationNumber;
