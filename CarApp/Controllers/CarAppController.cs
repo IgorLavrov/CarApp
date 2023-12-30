@@ -18,6 +18,32 @@ namespace CarApp.Controllers
                _CarAppServices= CarAppServices;
             
         }
+
+        [HttpGet]
+        public IActionResult Index1()
+        {
+            var result = _context.Cars
+                .OrderByDescending(y => y.BuiltAt)
+                .Select(x => new CarAppIndexViewModel
+                {
+                    Id = x.Id,
+                    Owner = x.Owner,
+                    Model = x.Model,
+                    VinNumber = x.VinNumber,
+                    TypeOfFuel = x.TypeOfFuel,
+                    CarWeight = x.CarWeight,
+                    RegistrationNumber = x.RegistrationNumber,
+                    BuiltAt = x.BuiltAt,
+                    RegistratedAt = x.RegistratedAt,
+                    Color = x.Color,
+                    EngineCapacity = x.EngineCapacity,
+                    NumberOfCarDoors = x.NumberOfCarDoors,
+                    Brand = x.Brand,
+                });
+
+            return View(result);
+        }
+
         [HttpGet]
         public IActionResult Index()
         {

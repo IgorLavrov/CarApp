@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CarApp.Models.CarApp.CarAppIndexViewModel>
+
+@{
+    int rowNumber = 1;
+}
+
+
+
+
+<div class="h1">
+    All placed Orders
+</div>
+<form method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Model</th>
+                <th scope="col">VinNumber</th>
+                <th scope="col">Color</th>
+                <th scope="col">TypeofFuel</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cars in Model)
+            {
+                <tr>
+                    <td>@rowNumber</td>
+                    <td>@cars.Owner</td>
+                    <td>@cars.Model</td>
+                    <td>@cars.VinNumber</td>
+                    <td>@cars.Color</td>
+                    <td>@cars.TypeOfFuel</td>
+                    <td>
+                        <a asp-action="details" asp-controller="CarApp" asp-route-id="@cars.Id" class="btn btn-info">Details</a>
+                       
+                    </td>
+                </tr>
+
+                rowNumber += 1;
+            }
+        </tbody>
+    </table>
+</form>

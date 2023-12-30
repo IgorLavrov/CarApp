@@ -16,12 +16,17 @@ namespace CarApp.CarAppTest
             {
                 CarAppDto dto = new CarAppDto();
                 dto.Owner = "Test";
-                dto.Model = "asast";
+                dto.Model = "BMW";
                 dto.EngineCapacity= 1;
-                dto.VinNumber = "Tjdhdvf";
+                dto.VinNumber = "T3344255";
+            dto.RegistrationNumber = "S436664";
+            dto.TypeOfFuel = "petrol";
             dto.Brand = "VolVo";
+            dto.CarWeight = 1;
+            dto.NumberOfCarDoors = 1;
+            dto.Color = "black";
                 dto.BuiltAt = DateTime.Now;
-                dto.RegistratedAt = DateTime.Now;
+                dto.RegistratedAt = DateTime.Today;
 
 
 
@@ -32,7 +37,7 @@ namespace CarApp.CarAppTest
             }
 
             [Fact]
-            public async Task ShouldNot_GetByIdKindergarten_WhenReturnsNotequal()
+            public async Task ShouldNot_GetByIdCar_WhenReturnsNotequal()
             {
                 Guid guid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
                 Guid wrongGuid = Guid.Parse(Guid.NewGuid().ToString());
@@ -44,7 +49,7 @@ namespace CarApp.CarAppTest
             }
 
             [Fact]
-            public async Task Should_GetByIdKindergarten_WhenRetunsEqual()
+            public async Task Should_GetByIdCarWhenRetunsEqual()
             {
                 Guid databaseGuid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
                 Guid guid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
@@ -57,7 +62,7 @@ namespace CarApp.CarAppTest
 
             [Fact]
 
-            public async Task Should_DeleteByIdKindergarten_WhenDeleteKindergarten()
+            public async Task Should_DeleteByIdCar_WhenDeleteCar()
             {
                 CarAppDto Car= MockCarData();
 
@@ -67,17 +72,24 @@ namespace CarApp.CarAppTest
                 Assert.Equal(createdCar, result);
             }
 
-        private CarAppDto MockCarData()
+        public CarAppDto MockCarData()
         {
             CarAppDto car = new()
             {
 
-                Owner = "Test",
-                VinNumber = "asast",
-               NumberOfCarDoors = 3244,
-                Model = "Tjdhdvf",
-                BuiltAt = DateTime.Now,
-                RegistratedAt = DateTime.Now
+            Owner = "Test",
+            Model = "Volvo",
+            EngineCapacity = 1,
+            VinNumber = "d334476255",
+            RegistrationNumber = "r5656664",
+            TypeOfFuel = "petrol",
+            Brand = "S85",
+            CarWeight = 1,
+            NumberOfCarDoors = 1,
+            Color = "white",
+           
+            BuiltAt = DateTime.Now,
+            RegistratedAt = DateTime.Now
             };
             return car;
         }
