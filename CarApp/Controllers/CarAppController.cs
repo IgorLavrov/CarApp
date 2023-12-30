@@ -3,10 +3,12 @@ using CarApp.Core.ServiceInterface;
 using CarApp.Data;
 
 using CarApp.Models.CarApp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarApp.Controllers
 {
+    
     public class CarAppController : Controller
     {
         private readonly CarAppContext _context;
@@ -18,6 +20,7 @@ namespace CarApp.Controllers
                _CarAppServices= CarAppServices;
             
         }
+
 
         [HttpGet]
         public IActionResult Index1()
@@ -43,7 +46,7 @@ namespace CarApp.Controllers
 
             return View(result);
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {

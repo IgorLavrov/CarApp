@@ -1,9 +1,10 @@
 ﻿using CarApp.Core.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarApp.Data
 {
-    public class CarAppContext:DbContext
+    public class CarAppContext: IdentityDbContext
     {
         public CarAppContext(
 
