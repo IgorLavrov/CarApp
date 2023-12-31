@@ -139,10 +139,10 @@ namespace CarApp.Controllers
 
             if (result == null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index1));
             }
 
-            return RedirectToAction(nameof(Index), vm);
+            return RedirectToAction(nameof(Index1), vm);
         }
 
         [HttpGet]
