@@ -39,7 +39,7 @@ namespace CarApp.CarAppTest
             [Fact]
             public async Task ShouldNot_GetByIdCar_WhenReturnsNotequal()
             {
-                Guid guid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
+                Guid guid = Guid.Parse("c8201505-888b-4190-b3c6-cc10e4acd26c");
                 Guid wrongGuid = Guid.Parse(Guid.NewGuid().ToString());
 
                 await Svc<ICarAppServices>().GetAsync(guid);
@@ -51,8 +51,8 @@ namespace CarApp.CarAppTest
             [Fact]
             public async Task Should_GetByIdCarWhenRetunsEqual()
             {
-                Guid databaseGuid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
-                Guid guid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
+                Guid databaseGuid = Guid.Parse("c8201505-888b-4190-b3c6-cc10e4acd26c");
+                Guid guid = Guid.Parse("c8201505-888b-4190-b3c6-cc10e4acd26c");
 
                 await Svc<ICarAppServices>().GetAsync(guid);
 
@@ -72,6 +72,125 @@ namespace CarApp.CarAppTest
                 Assert.Equal(createdCar, result);
             }
 
+
+        [Fact]
+        public async Task Should_updateCar_WhenUpdatedDataversion()
+        {
+            CarAppDto Car = MockCarData();
+
+            var createdCar= await Svc<ICarAppServices>().Create(Car);
+
+            CarAppDto update = MockUpdateCarData();
+
+            var updatedCar = await Svc<ICarAppServices>().Update(update);
+
+            Assert.DoesNotMatch(createdCar.Owner.ToString(), updatedCar.Owner.ToString());
+            Assert.NotEqual(updatedCar.RegistrationNumber, createdCar.RegistrationNumber);
+
+        }
+
+        [Fact]
+        public async Task ShouldNot_UpdateCar_WhenNotUpdateData()
+        {
+            CarAppDto car = MockCarData();
+            await Svc<ICarAppServices>().Create(car);
+
+            CarAppDto NullUpdate = MockNullCar();
+            await Svc<ICarAppServices>().Update(NullUpdate);
+
+
+            var nullId = NullUpdate.Id;
+            Assert.True(car.Id == nullId);
+            Assert.Equal(car.Id, nullId);
+
+
+        }
+
+        [Fact]
+        public async Task Should_UpdateCar_WhenUpdateData()
+        {
+            var guid = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71");
+
+            CarAppDto car= MockCarData();
+
+            CarAppDto car1 = new CarAppDto()
+            {
+                Id = Guid.Parse("21e9cd74-b60b-4fd4-a458-5f4ce7333d71"),
+                Owner = "TFR",
+                Model = "Suzuki",
+                EngineCapacity = 2,
+                VinNumber = "z376254",
+                RegistrationNumber = "s24424",
+                TypeOfFuel = "diesel",
+                Brand = "SR42",
+                CarWeight = 2455    ,
+                NumberOfCarDoors = 4,
+                Color = "white",
+
+                BuiltAt = DateTime.Now,
+                RegistratedAt = DateTime.Now
+
+
+            };
+
+            await Svc<ICarAppServices>().Update(car);
+
+            Assert.Equal(car1.Id, guid);
+            Assert.NotEqual(car.Owner, car1.Owner);
+            Assert.NotSame(car.RegistrationNumber, car1.RegistrationNumber);
+            Assert.DoesNotMatch(car.Model.ToString(), car1.Model.ToString());
+
+        }
+
+
+
+
+        private CarAppDto MockUpdateCarData()
+        {
+            CarAppDto CarUpdate = new()
+            {
+                Owner = "les1",
+                Model = "BMW",
+                EngineCapacity = 221,
+                VinNumber = "d334476254",
+                RegistrationNumber = "r566644446",
+                TypeOfFuel = "diesel",
+                Brand = "V6",
+                CarWeight = 144,
+                NumberOfCarDoors = 4,
+                Color = "black",
+
+                BuiltAt = DateTime.Now,
+                RegistratedAt = DateTime.Now
+
+            };
+            return CarUpdate;
+        }
+        private CarAppDto MockNullCar()
+        {
+            CarAppDto dtonull = new()
+            {
+                Id = null,
+                Owner = "Test2",
+                Model = "BMW",
+                EngineCapacity = 41,
+                VinNumber = "d334476254",
+                RegistrationNumber = "r5656664",
+                TypeOfFuel = "diesel",
+                Brand = "S85",
+                CarWeight = 441,
+                NumberOfCarDoors = 4,
+                Color = "white",
+
+                BuiltAt = DateTime.Now,
+                RegistratedAt = DateTime.Now
+
+            };
+
+            return dtonull;
+        }
+
+
         public CarAppDto MockCarData()
         {
             CarAppDto car = new()
@@ -79,13 +198,13 @@ namespace CarApp.CarAppTest
 
             Owner = "Test",
             Model = "Volvo",
-            EngineCapacity = 1,
+            EngineCapacity = 5,
             VinNumber = "d334476255",
             RegistrationNumber = "r5656664",
             TypeOfFuel = "petrol",
             Brand = "S85",
-            CarWeight = 1,
-            NumberOfCarDoors = 1,
+            CarWeight = 434,
+            NumberOfCarDoors = 4,
             Color = "white",
            
             BuiltAt = DateTime.Now,
